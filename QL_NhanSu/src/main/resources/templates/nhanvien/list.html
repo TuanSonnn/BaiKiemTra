@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách nhân viên</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Danh sách nhân viên</h1>
+    <a href="/nhanvien/add" class="btn btn-success">Thêm nhân viên mới</a>
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Mã NV</th>
+            <th>Tên NV</th>
+            <th>Giới tính</th>
+            <th>Nơi sinh</th>
+            <th>Phòng ban</th>
+            <th>Lương</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nhanvien : ${nhanviens}">
+            <td th:text="${nhanvien.Ma_NV}"></td>
+            <td th:text="${nhanvien.Ten_NV}"></td>
+            <td th:text="${nhanvien.Phai}"></td>
+            <td th:text="${nhanvien.Noi_Sinh}"></td>
+            <td th:text="${nhanvien.phongban != null ? nhanvien.phongban.Ten_Phong : 'N/A'}"></td>
+            <td th:text="${nhanvien.Luong}"></td>
+            <td><a th:href="@{/nhanvien/edit/{id}(id=${nhanvien.Ma_NV})}" class="btn btn-primary">Chỉnh sửa</a></td>
+            <td><a th:href="@{/nhanvien/delete/{id}(id=${nhanvien.Ma_NV})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa nhân viên này?')">Xóa</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

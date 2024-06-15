@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách phòng ban</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+
+<div class="container">
+    <h1>Department List</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${not #lists.isEmpty(phongbans)}" th:each="phongban : ${phongbans}">
+            <td th:text="${phongban.Ma_Phong}"></td>
+            <td th:text="${phongban.Ten_Phong}"></td>
+        </tr>
+        <tr th:unless="${not #lists.isEmpty(phongbans)}">
+            <td colspan="2">No departments available</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+</footer>
+</body>
+</html>

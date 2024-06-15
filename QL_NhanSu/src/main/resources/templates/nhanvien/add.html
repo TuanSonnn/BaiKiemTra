@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm nhân viên</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Thêm nhân viên mới</h1>
+    <form action="#" th:action="@{/nhanvien/add}" th:object="${nhanvien}" method="post">
+        <div class="form-group">
+            <label>Mã NV:</label>
+            <input type="text" th:field="*{Ma_NV}" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Tên NV:</label>
+            <input type="text" th:field="*{Ten_NV}" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Giới tính:</label>
+            <input type="text" th:field="*{Phai}" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Nơi sinh:</label>
+            <input type="text" th:field="*{Noi_Sinh}" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Lương:</label>
+            <input type="number" th:field="*{Luong}" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label>Phòng ban:</label>
+            <select th:field="*{Ma_Phong}" class="form-control">
+                <option th:each="phongban : ${phongbans}" th:value="${phongban.Ma_Phong}" th:text="${phongban.Ten_Phong}"></option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Thêm nhân viên</button>
+    </form>
+</div>
+</body>
+</html>
